@@ -19,12 +19,12 @@ public class BattleshipClient {
         PrintWriter out = new PrintWriter(
                 socket.getOutputStream(), true);
 
-        // 🔥 START LISTENER THREAD
+        
         ServerListener listener = new ServerListener(in);
         Thread thread = new Thread(listener);
         thread.start();
 
-        // MAIN THREAD → handles input
+        
         Scanner sc = new Scanner(System.in);
 
         while (true) {

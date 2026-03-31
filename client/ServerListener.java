@@ -19,7 +19,7 @@ public class ServerListener implements Runnable {
             while ((response = in.readLine()) != null) {
                 System.out.println("SERVER: " + response);
 
-                // You can later add smarter parsing here
+                
             }
 
         } catch (IOException e) {
