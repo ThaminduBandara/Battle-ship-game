@@ -2,7 +2,7 @@ package common;
 
 public class Protocol {
 
-    // Server -> Client messages
+    
     public static final String WELCOME = "WELCOME";
     public static final String PLACE = "PLACE";
     public static final String START = "START";
@@ -13,7 +13,7 @@ public class Protocol {
     public static final String WIN = "WIN";
     public static final String LOSE = "LOSE";
 
-    // Client -> Server messages
+    
     public static final String PLACED = "PLACED";
     public static final String ATTACK = "ATTACK";
 }
