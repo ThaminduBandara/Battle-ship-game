@@ -6,18 +6,17 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class BattleshipServer {
-    
-    public static void main(String[] args) {
-        // Server implementation
-        private static final int PORT = 5000;
+
+    private static final int PORT = 5000;
         
         private ClientHandler p1;
         private ClientHandler p2;
 
         private final GameState game= new GameState();
-        private boolean Started=false;
+        private boolean started=false;
         private int turn=1;
 
+        
         public static void main(String[] args) throws IOException{
             new BattleshipServer().start();
         }
@@ -48,7 +47,7 @@ public class BattleshipServer {
             }
         }
         // ClientHandler will call this when a player places ships
-        public synchronized void  onPlaced(int playerID, int[] coords, clientHandler from){
+        public synchronized void  onPlaced(int playerID, int[] coords, ClientHandler from){
             boolean ok = game.placeShips(playerID, coords);
             if(!ok){
                 from.send(Protocol.INFO + "Invalid ship placement. Try again.");
@@ -79,7 +78,7 @@ public class BattleshipServer {
                 return;
             }
 
-            String result = game.attack(playeraId,r,c);
+            String result = game.attack(playerId,r,c);
             from.send(Protocol.RESULT + " "+result);
 
             ClientHandler opponent = (playerId == 1) ? p2 : p1;
@@ -118,5 +117,7 @@ public class BattleshipServer {
         try { if (p1 != null) p1.close(); } catch (Exception ignored) {}
         try { if (p2 != null) p2.close(); } catch (Exception ignored) {}
     }
-    }
+    
+    
 }
+
